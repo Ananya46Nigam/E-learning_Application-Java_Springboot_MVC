@@ -10,4 +10,5 @@ interface LearnerService
     Learner getLearnerByUsername(String username);
     boolean isValidLearner(String username, String password);
     boolean isValidPassword(String password); 
+    void saveUpdatedLearner(Learner learner);
 }

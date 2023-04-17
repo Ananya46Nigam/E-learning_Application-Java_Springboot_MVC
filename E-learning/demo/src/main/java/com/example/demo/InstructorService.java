@@ -11,4 +11,5 @@ interface InstructorService
     Instructor getInstructorByUsername(String username);
     boolean isValidInstructor(String username, String password);
     boolean isValidPassword(String password); 
+    void saveUpdatedInstructor(Instructor instructor);
 }

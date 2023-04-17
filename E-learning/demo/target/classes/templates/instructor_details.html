@@ -1,0 +1,66 @@
+
+ <!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+     <title>Instructor Details</title>
+     <style>
+         body {
+             background-image: url('https://wcm-cdn.wacom.com/-/media/images/discover-2020/elearning/wacom-elearning-home-digital-classroom-f.jpg');
+             background-size: cover;
+             background-repeat: no-repeat;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+         }
+ 
+         .content {
+             max-width: 70%;
+             padding: 100px;
+             background: rgba(255, 255, 255, 0.8);
+             border-radius: 30px;
+             box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+             text-align: center;
+
+         }
+ 
+         h1 {
+             text-align: center;
+             margin-top: 0;
+             margin-bottom: 20px;
+             font-size: 36px;
+             font-family: Arial, sans-serif;
+         }
+ 
+         p {
+             font-size: 20px;
+             margin-bottom: 10px;
+         }
+ 
+         strong {
+             font-weight: bold;
+         }
+ 
+         a {
+             font-size: 18px;
+             color: #0066CC;
+             text-decoration: none;
+         }
+ 
+         a:hover {
+             text-decoration: underline;
+         }
+     </style>
+ </head>
+ <body>
+ <div class="content">
+     <h1>Instructor Details</h1>
+     <p><strong>Username:</strong> <span th:text="${instructor.username}"></span></p>
+     <p><strong>First Name:</strong> <span th:text="${instructor.firstname}"></span></p>
+     <p><strong>Last Name:</strong> <span th:text="${instructor.lastname}"></span></p>
+     <p><strong>Email:</strong> <span th:text="${instructor.email_id}"></span></p>
+     <p><strong>Contact Number:</strong> <span th:text="${instructor.contact_no}"></span></p>
+ </div>
+ </body>
+ </html>
+ 

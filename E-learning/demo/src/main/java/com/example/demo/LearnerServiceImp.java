@@ -73,4 +73,18 @@ public class LearnerServiceImp implements LearnerService
         return password.matches(passwordRegex);
     }
 
+    @Override
+    public void saveUpdatedLearner(Learner learner) {
+        Learner existingLearner = getLearnerByUsername(learner.getUsername());
+    
+        if (existingLearner != null) 
+        {
+            existingLearner.setFirstname(learner.getFirstname());
+            existingLearner.setLastname(learner.getLastname());
+            existingLearner.setEmail_id(learner.getEmail_id());
+            existingLearner.setContact_no(learner.getContact_no());
+            this.learnerRepository.save(existingLearner);
+        }
+    }
+
 }

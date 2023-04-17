@@ -72,4 +72,18 @@ public class InstructorServiceImp implements InstructorService
         String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
         return password.matches(passwordRegex);
     }
+
+    @Override
+    public void saveUpdatedInstructor(Instructor instructor) {
+        Instructor existingInstructor = getInstructorByUsername(instructor.getUsername());
+    
+        if (existingInstructor != null) 
+        {
+            existingInstructor.setFirstname(instructor.getFirstname());
+            existingInstructor.setLastname(instructor.getLastname());
+            existingInstructor.setEmail_id(instructor.getEmail_id());
+            existingInstructor.setContact_no(instructor.getContact_no());
+            this.instructorRepository.save(existingInstructor);
+        }
+    }
 }

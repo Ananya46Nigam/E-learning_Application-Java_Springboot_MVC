@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Instructors Management Page</title>
+    <title>Learners Management Page</title>
     <style>
         body {
             background-image: url('https://wcm-cdn.wacom.com/-/media/images/discover-2020/elearning/wacom-elearning-home-digital-classroom-f.jpg');
@@ -93,7 +93,7 @@
     <div class="content">
         <h1>Update Instructors</h1>
         <hr>    
-        <form th:action="@{/saveUpdatedInstructor}" th:object="${instructor}" method="POST">
+        <form th:action="@{/saveUpdatedLearner}" th:object="${learner}" method="POST">
             <input type="hidden" id="username" name="username" th:field="*{username}" />
     
             <label for="firstname">First Name:</label>
@@ -109,7 +109,7 @@
             <input type="text" id="contact_no" name="contact_no" th:field="*{contact_no}" />
 
             <input type="hidden" id="password" name="password" th:field="*{password}" />
-            <button type="submit">Update Instructor</button>
+            <button type="submit">Update Learner</button>
         </form>
         </div>
 </body>
