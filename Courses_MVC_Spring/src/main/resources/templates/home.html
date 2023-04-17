@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head> 
+    <title>APower4 Learning - Learn anything, anywhere</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <header class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <a class="navbar-brand" href="#"><p><strong>APower4 Learning</strong></p></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#">Courses</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#">Instructors</a>
+            </li>
+            <li class="nav-item bg-dark text-white px-2 mr-3">
+              <a class="nav-link text-white" href="#">Login</a>
+            </li>
+            <li class="nav-item bg-light px-2 border border-dark mr-3">
+              <a class="nav-link bg-light text-dark" href="#">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <section class="hero bg-light">
+        <div class="container my-3 py-3">
+          <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-11">
+                      <h1 class="display-4 mt-5">Learn Anything, Anytime, Anywhere</h1>
+                      <p class="lead">Join millions of learners from around the world and start learning today!</p>
+                      <a href="/list" class="btn btn-primary btn-lg">Explore Courses</a>
+                    </div>
+                    <div class="col-md-1">
+                      <img class="ml-5" src="https://images.unsplash.com/photo-1531379410502-63bfe8cdaf6f" height="400px" width="300px"/>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container py-4 mt-5 bg-light">
+		
+        <h2 class="text-center">A broad selection of courses</h2>
+        <p class="text-center mb-2 text-muted">Choose from 213,000 online video courses with new additions published every month</p>
+        
+        <hr/>
+        <div class="card-deck">
+            <div th:each="course: ${courses}" class="card" style="min-width: 18rem; max-width: 22rem; margin-bottom: 20px;">
+                <!-- <div class="card-header bg-dark text-white">
+                    Featured
+                </div> -->
+                <img class="card-img-top" th:src="${course.course_img_url}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title"  th:text="${course.course_name}"></h5>
+                <p class="card-subtitle mb-2 text-muted" th:text="${course.instructor_name}"></p>
+                <p class="card-text" th:text="${course.course_desc}"></p>
+                <hr />
+                <div class="d-flex justify-content-between">
+                    <div>
+                    <div class="d-inline-block">₹</div> 
+                    <p class="d-inline-block card-subtitle mb-2" th:text="${course.course_price}"></p>
+                    </div>
+                    <div>
+                    <p class="d-inline-block card-subtitle mb-2" th:text="${course.course_rating}"></p>
+                    <div class="d-inline-block">⭐</div> 
+                    </div>
+                </div>
+                <hr />
+                <a href="#" class="btn btn-primary">See More</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <table class="table table-bordered table-striped">
+        
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Course Description</th>
+                    <th>Instructor Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course: ${courses}">
+                    <td th:text="${course.course_id}" />
+                    <td th:text="${course.course_name}" />
+                    <td th:text="${course.course_desc}" />
+                    <td th:text="${course.instructor_name}" />
+                </tr>
+            </tbody>
+            
+        </table> -->
+    </div>
+</body>
+</html>
