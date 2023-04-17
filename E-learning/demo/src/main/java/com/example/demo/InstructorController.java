@@ -83,76 +83,24 @@ public String InstructorFunctions(Model model, @RequestParam("username") String 
         model.addAttribute("instructor", instructor);
         return "update_instructor";
     }
+
+  //   @PostMapping("/saveUpdatedInstructor")
+  // public String saveUpdatedInstructor(@ModelAttribute("instructor") Instructor instructor,Mode)
+  // {
+  //   instructorService.saveUpdatedInstructor(instructor);
+  //   return "instructor_functions";
+  // }
+
+@PostMapping("/saveUpdatedInstructor")
+public String saveUpdatedInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
+{
+    instructorService.saveUpdatedInstructor(instructor);
+    // retrieve the updated instructor object from the service layer
+    Instructor updatedInstructor = instructorService.getInstructorByUsername(instructor.getUsername());
+    // add the updated instructor object to the model attribute
+    model.addAttribute("instructor", updatedInstructor);
+    return "instructor_details";
+    
 }
 
-// @Controller
-// public class InstructorController {
-    
-//     @Autowired
-//     private InstructorService instructorService;
-    
-//     // Display all the instructors
-//     @GetMapping("/")
-//     public String viewHomePage(Model model) {
-//         return "index";
-//     }
-    
-//     // Show form for registering a new instructor
-//     @GetMapping("/instructor_register")
-//     public String showNewInstructorForm(Model model) {
-//         Instructor instructor = new Instructor();
-//         model.addAttribute("instructor", instructor);
-//         return "new_instructor";
-//     }
-    
-//     // Save a new instructor to the database
-//     @PostMapping("/saveInstructor")
-//     public String saveInstructor(@ModelAttribute("instructor") Instructor instructor) {
-//         instructorService.saveInstructor(instructor);
-//         return "redirect:/";
-//     }
-    
-//     // Show form for logging in as an instructor
-//     @GetMapping("/instructor_login")
-//     public String showInstructorLoginForm(Model model) {
-//         Instructor instructor = new Instructor();
-//         model.addAttribute("instructor", instructor);
-//         return "instructor_login";
-//     }
-    
-//     // Handle instructor login form submission
-//     @PostMapping("/instructor_login")
-//     public String handleInstructorLoginForm(@ModelAttribute("instructor") Instructor instructor, Model model) {
-//         boolean isValidInstructor = instructorService.isValidInstructor(instructor.getUsername(), instructor.getPassword());
-//         if (isValidInstructor) {
-//             model.addAttribute("username", instructor.getUsername());
-//             return "redirect:/instructor_functions";
-//         } else {
-//             model.addAttribute("errorMessage", "Invalid username or password");
-//             return "instructor_login";
-//         }
-//     }
-    
-//     // Show the instructor functions page
-//     @GetMapping("/instructor_functions")
-//     public String showInstructorFunctionsPage(Model model, @RequestParam("username") String username) {
-//         Instructor instructor = instructorService.getInstructorByUsername(username);
-//         model.addAttribute("instructor", instructor);
-//         return "instructor_functions";
-//     }
-    
-//     // Show form for updating instructor information
-//     @GetMapping("/update_instructor")
-//     public String showUpdateInstructorForm(Model model, @RequestParam("username") String username) {
-//         Instructor instructor = instructorService.getInstructorByUsername(username);
-//         model.addAttribute("instructor", instructor);
-//         return "update_instructor";
-//     }
-    
-//     // Handle instructor update form submission
-//     @PostMapping("/update_instructor")
-//     public String handleUpdateInstructorForm(@ModelAttribute("instructor") Instructor instructor) {
-//         instructorService.saveInstructor(instructor);
-//         return "redirect:/instructor_functions?username=" + instructor.getUsername();
-//     }
-// }
+}

@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -49,10 +50,34 @@ public String handleInstructorLogin(@ModelAttribute("learner")  Learner learner)
 {
       
         if (learnerService.isValidLearner(learner.getUsername(),learner.getPassword())) {
-            return "course";
+            return "learner_functions";
         } else {
             return "learner_login";
         }
-    } 
+    }
+    @GetMapping("/learner_functions")
+    public String InstructorFunctions(Model model, @RequestParam("username") String username) 
+        {
+            // get instructor from the service based on the username
+            Learner learner = learnerService.getLearnerByUsername(username);
+            // create model attribute to bind the form data
+            model.addAttribute("learner", learner);
+            return "learner_functions";
+        }
+        @GetMapping("/updatelearner")
+        public String showFormForUpdate(Model model, @RequestParam("username") String username) {
+            // get instructor from the service based on the username
+            Learner learner = learnerService.getLearnerByUsername(username);
+            // create model attribute to bind the form data
+            model.addAttribute("learner",learner);
+            return "update_learner";
+        }
+    
+        @PostMapping("/saveUpdatedLearner")
+      public String saveUpdatedLearner(@ModelAttribute("learner") Learner learner)
+      {
+        learnerService.saveUpdatedLearner(learner);
+        return "learner_details";
+      }
 }
 
