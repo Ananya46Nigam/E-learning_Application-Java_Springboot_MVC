@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Update Course</title>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container d-flex flex-column justify-content-center">
+    <h1>Update Course</h1>
+    <form action="#" th:action="@{/course/update/{id}(id=${course.course_id})}"  class="form-group" method="POST">
+        <!-- <label for="course_id">Course ID:</label><br>
+        <input type="number" id="course_id" name="course_id" th:field="*{course_id}"><br> -->
+        <label for="course_name">Course Name:</label><br>
+        <input type="text" id="course_name" class="form-control" name="course_name" th:value="${course.course_name}" required><br>
+        <label for="course_desc">Course Description:</label><br>
+        <input type="text" id="course_desc" class="form-control" name="course_desc" th:value="${course.course_desc}" required><br>
+        <label for="instructor_name">Instructor Name:</label><br>
+        <input type="text" id="instructor_name" class="form-control" name="instructor_name" th:value="${course.instructor_name}" required><br>
+        <label for="course_img_url">Course Image URL:</label><br>
+        <input type="text" id="course_img_url" class="form-control" name="course_img_url" th:value="${course.course_img_url}" required><br>
+        <div class="d-flex flex-row justify-content-center">
+            <div class="form-group w-100 mr-3">
+            <label for="course_rating">Course Rating:</label><br>
+            <input type="text" id="course_rating" class="form-control" name="course_rating" th:value="${course.course_rating}" required><br>
+            </div>
+            <div class="form-group w-100">
+            <label for="course_price">Course Price:</label><br>
+            <input type="number" id="course_price" class="form-control" name="course_price" th:value="${course.course_price}" required><br>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <div class="form-group w-100 mr-3">
+            <label for="course_difficulty_level">Course Difficulty Level:</label><br>
+            <input type="text" id="course_difficulty_level" class="form-control" name="course_difficulty_level" th:value="${course.course_difficulty_level}" required><br>
+            </div>
+            <div class="form-group w-100">
+            <label for="course_estimated_duration">Course Estimated Duration:</label><br>
+            <input type="number" id="course_estimated_duration" class="form-control" name="course_estimated_duration" th:value="${course.course_estimated_duration}" required><br>
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+</div>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
