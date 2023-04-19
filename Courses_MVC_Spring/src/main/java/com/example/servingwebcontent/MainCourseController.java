@@ -154,6 +154,14 @@ public class MainCourseController {
       return "list-courses";
   }
 
+  @GetMapping("/courses/{course_id}")
+  public String getIndividualCourse(Model model, @PathVariable("course_id") Integer course_id) {
+    Course course = courseRepository.findById(course_id)
+    .orElseThrow(() -> new IllegalArgumentException("Invalid course ID: " + course_id));
+    model.addAttribute("courses", course);
+      return "course-details";
+  }
+
   @GetMapping({"/home", "/"})
   public String getIndex(Model model) {
       model.addAttribute("courses", courseRepository.findAll());
