@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Details</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+    <div th:each="course: ${courses}" class="card" style="min-width: 18rem; max-width: 22rem; margin-bottom: 20px;">
+    <h1 th:text="${course.course_name}"></h1>
+    <p th:text="${course.course_desc}"></p>
+    <p th:text="${course.instructor_name}"></p>
+    <p th:text="${course.course_price}"></p>
+    <p th:text="${course.course_rating}"></p>
+    </div>
+</div>
+</body>
+</html>
