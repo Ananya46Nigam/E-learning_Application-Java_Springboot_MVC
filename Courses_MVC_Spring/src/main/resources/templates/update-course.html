@@ -9,7 +9,7 @@
 <body>
     <div class="container d-flex flex-column justify-content-center">
     <h1>Update Course</h1>
-    <form action="#" th:action="@{/course/update/{id}(id=${course.course_id})}"  class="form-group" method="POST">
+    <form th:action="@{/admin/update/{course_id}(course_id=${course.course_id})}" th:object="${course}" class="form-group" method="POST">
         <!-- <label for="course_id">Course ID:</label><br>
         <input type="number" id="course_id" name="course_id" th:field="*{course_id}"><br> -->
         <label for="course_name">Course Name:</label><br>
