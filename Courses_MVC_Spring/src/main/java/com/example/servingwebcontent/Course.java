@@ -101,4 +101,3 @@ public class Course {
   //   this.published = published;
   // }
 }
-
