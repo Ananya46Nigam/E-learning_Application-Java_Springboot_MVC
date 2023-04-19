@@ -4,7 +4,7 @@
 <head> 
     <title>APower4 Learning - Learn anything, anywhere</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
@@ -24,14 +24,14 @@
             <li class="nav-item bg-dark text-white px-2 mr-3">
               <a class="nav-link text-white" href="#">Login</a>
             </li>
-            <li class="nav-item bg-light px-2 border border-dark mr-3">
+            <li class="nav-item bg-light px-2 border border-dark">
               <a class="nav-link bg-light text-dark" href="#">Sign Up</a>
             </li>
           </ul>
         </div>
       </header>
-      <section class="hero bg-light">
-        <div class="container mt-3 mb-5 py-3">
+      <section class="hero bg-light" style="height: 75vh;">
+        <div class="container mt-5 mb-5 py-3">
           <div class="row">
             <div class="col-md-8">
                 <div class="row">
@@ -50,12 +50,46 @@
           </div>
         </div>
       </section>
-      <hr />
+      <hr style="height: 0.2px; background-color: black"/>
       <section class="container py-4 mt-5 ">
         <h2 class="text-center">Featured courses this month</h2>
         <p class="text-center mb-2 text-muted">Check out our diverse collection of top courses</p>
-
+        <div id="carouselExampleDark" class="carousel carousel-dark slide w-75 mx-auto my-5" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="https://img-c.udemycdn.com/course/240x135/438522_500f_7.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-white px-2" style="background-color: black;">
+                <h5><strong>Complete Blender Creator: Learn 3D Modelling for Beginners</strong></h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="https://img-c.udemycdn.com/course/480x270/5198560_4062_2.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-white" style="background-color: black;">
+                <h5><strong>Unity 2D RPG: Complete Combat System</strong></h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://img-c.udemycdn.com/course/240x135/874012_c7f2_3.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-white" style="background-color: black;">
+                <h5><strong>The Ultimate Drawing Course - Beginner to Advanced</strong></h5>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
       </section>
+
+      <hr style="height: 0.2px; background-color: black"/>
 
       <section>
       <div class="container py-4 mt-5 bg-light">
@@ -63,18 +97,21 @@
         <h2 class="text-center">A broad selection of courses</h2>
         <p class="text-center mb-2 text-muted">Choose from 213,000 online video courses with new additions published every month</p>
         
-        <hr/>
-        <div class="card-deck">
+        
+        <div class="card-deck mt-5">
             <div th:each="course: ${courses}" class="card" style="min-width: 18rem; max-width: 22rem; margin-bottom: 20px;">
                 <!-- <div class="card-header bg-dark text-white">
                     Featured
                 </div> -->
-                <img class="card-img-top" th:src="${course.course_img_url}" alt="Card image cap">
+                <div class="card-img-top position-relative">
+                  <span class="badge position-absolute text-white" style="top: 0.7rem; right: 0.5rem; background-color:  turquoise; height: 25px;  padding: 7px;" th:text="${course.course_difficulty_level}"></span>
+                  <img th:src="${course.course_img_url}" alt="Card image cap" style="width: 100%;">
+              </div>
                 <div class="card-body">
                 <h5 class="card-title"  th:text="${course.course_name}"></h5>
                 <p class="card-subtitle mb-2 text-muted" th:text="${course.instructor_name}"></p>
                 <p class="card-text" th:text="${course.course_desc}"></p>
-                <hr />
+
                 <div class="d-flex justify-content-between">
                     <div>
                     <div class="d-inline-block">₹</div> 
@@ -85,8 +122,8 @@
                     <div class="d-inline-block">⭐</div> 
                     </div>
                 </div>
-                <hr />
-                <a href="#" class="btn btn-primary">See More</a>
+           
+                <a href="#" class="btn btn-primary mt-2">See More</a>
                 </div>
             </div>
         </div>
@@ -113,5 +150,8 @@
         </table> -->
     </div>
   </section>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
