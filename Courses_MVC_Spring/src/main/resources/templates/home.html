@@ -61,7 +61,7 @@
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
+            <div class="carousel-item active" data-bs-interval="5000">
               <img src="https://img-c.udemycdn.com/course/240x135/438522_500f_7.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block text-white px-2" style="background-color: black;">
                 <h5><strong>Complete Blender Creator: Learn 3D Modelling for Beginners</strong></h5>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
            
-                <a href="#" class="btn btn-primary mt-2">See More</a>
+                <a th:href="@{/courses/{id}(id=${course.course_id})}" class="btn btn-primary mt-2">See More</a>
                 </div>
             </div>
         </div>
