@@ -1,5 +1,7 @@
-1.Model-View-Controller (MVC) Pattern: This pattern separates the application into three components: model (data), view (user interface), and controller (handles user input and updates the model and view). In a quiz application, the model would contain the quiz questions and answers, the view would display the questions and receive user input, and the controller would handle user input and update the model and view accordingly.
-
+1.Model-View-Controller (MVC) Pattern: This pattern separates the application into three components: model (data), view (user interface), 
+and controller (handles user input and updates the model and view). In a quiz application, the model would contain the quiz questions and
+answers, the view would display the questions and receive user input, and the controller would handle user input and update the model and 
+view accordingly.
 
 *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** 
 # GRASP Principles:
