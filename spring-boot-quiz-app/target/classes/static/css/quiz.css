@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+	background-color: rgb(174, 255, 248);
+}
+
+h1 {
+	font-size: 22px;
+	text-align: center;
+	padding: 15px 25px;
+	border-radius: 4px;
+}
+
+.ques-box {
+	width: 100%;
+	max-width: 800px;
+	padding: 15px 25px;
+	margin: 50px auto 0 auto;
+	border-radius: 4px;
+	
+}
+
+.option {
+	display: flex;
+	flex-direction: row;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: 500;
+	color: rgb(1, 230, 255);
+}
+
+.option p {
+	margin-left: 15px;
+	position: relative;
+	margin-top: -6px;
+	
+}
