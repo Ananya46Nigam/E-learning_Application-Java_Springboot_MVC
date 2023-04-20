@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.page-background {
+	background-image: url('/images/score.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+  }
+
+
+.main-container {
+	min-height: calc(100vh - 136px);
+}
+
+table {
+	width: 100%;
+	text-align: center;
+}
+
+tr {
+	border: 1px solid white;
+}
+
+th, td {
+	padding: 10px;
+}

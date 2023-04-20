@@ -1,0 +1,91 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.main-container {
+	min-height: calc(100vh - 136px);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas: "image-box"
+						"text-box";
+	row-gap: 50px;
+	column-gap: 50px;
+}
+
+@media screen and (min-width:850px) {
+	.main-container {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: "image-box text-box";
+	}
+}
+
+.page-background {
+	background-image: url('/images/bg.webp');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+  }
+  
+
+.image-box {
+	position: relative;
+	grid-area: image-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	
+}
+
+
+  
+
+.image-box img {
+	width: 100%;
+	max-width: 450px;
+}
+
+.text-box {
+	grid-area: text-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	width: 100%;
+	background-color: darkslateblue;
+}
+
+.card p {
+	color: #f3ff07;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.card input {
+	margin-bottom: 40px;
+	height: 35px;
+}
+
+.warning {
+	position: relative;
+	margin-top: -37px;
+}
