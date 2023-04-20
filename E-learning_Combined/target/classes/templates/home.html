@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head> 
+    <title>APower4 Learning - Learn anything, anywhere</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <header class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <a class="navbar-brand" href="#"><p><strong>APower4 Learning</strong></p></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="/list">Courses</a>
+            </li>
+            <!-- <li class="nav-item mr-3">
+              <a class="nav-link" href="/listinstructors">Instructors</a>
+            </li> -->
+            <!-- <li class="nav-item bg-dark text-white px-2 mr-3">
+              <a class="nav-link text-white" href="#">Login</a>
+            </li> -->
+            <li class="nav-item bg-light px-2 border border-dark">
+              <a class="nav-link bg-light text-dark" href="/signup">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <section class="hero bg-light" style="height: 75vh;">
+        <div class="container mt-5 mb-5 py-3">
+          <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-11">
+                      <h1 class="display-4 mt-5"><strong>Learn Anything, Anytime, Anywhere</strong></h1>
+                      <p class="lead mt-2">Get Access to High-Quality Courses from Top Educators and Achieve Your Goals on Your Own Schedule. Join millions of learners from around the world and start learning today!</p>
+                      <a href="/list" class="btn btn-primary btn-lg mt-3">Explore Courses</a>
+                    </div>
+                    <div class="col-md-1">
+                      <!-- <img class="ml-5" src="https://images.unsplash.com/photo-1531379410502-63bfe8cdaf6f" height="400px" width="300px"/> -->
+                      <img class="ml-5" src="https://illustrations.popsy.co/blue/studying.svg" height="400px" width="400px"/>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr style="height: 0.2px; background-color: black"/>
+      <section class="container py-4 mt-5 ">
+        <h2 class="text-center">Featured courses this month</h2>
+        <p class="text-center mb-2 text-muted">Check out our diverse collection of top courses</p>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide w-75 mx-auto my-5" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+              <img src="https://img-c.udemycdn.com/course/240x135/438522_500f_7.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-white px-2" style="background-color: black;">
+                <h5><strong>Complete Blender Creator: Learn 3D Modelling for Beginners</strong></h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="https://img-c.udemycdn.com/course/480x270/5198560_4062_2.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-white" style="background-color: black;">
+                <h5><strong>Unity 2D RPG: Complete Combat System</strong></h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://img-c.udemycdn.com/course/240x135/874012_c7f2_3.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block text-white" style="background-color: black;">
+                <h5><strong>The Ultimate Drawing Course - Beginner to Advanced</strong></h5>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <hr style="height: 0.2px; background-color: black"/>
+
+      <section>
+      <div class="container py-4 mt-5 bg-light">
+		
+        <h2 class="text-center">A broad selection of courses</h2>
+        <p class="text-center mb-2 text-muted">Choose from 213,000 online video courses with new additions published every month</p>
+        
+        
+        <div class="card-deck mt-5">
+            <div th:each="course: ${courses}" class="card" style="min-width: 18rem; max-width: 22rem; margin-bottom: 20px;">
+                <!-- <div class="card-header bg-dark text-white">
+                    Featured
+                </div> -->
+                <div class="card-img-top position-relative">
+                  <span class="badge position-absolute text-white" style="top: 0.7rem; right: 0.5rem; background-color:  turquoise; height: 25px;  padding: 7px;" th:text="${course.course_difficulty_level}"></span>
+                  <img th:src="${course.course_img_url}" alt="Card image cap" style="width: 100%;">
+              </div>
+                <div class="card-body">
+                <h5 class="card-title"  th:text="${course.course_name}"></h5>
+                <p class="card-subtitle mb-2 text-muted" th:text="${course.instructor_name}"></p>
+                <p class="card-text" th:text="${course.course_desc}"></p>
+
+                <div class="d-flex justify-content-between">
+                    <div>
+                    <div class="d-inline-block">₹</div> 
+                    <p class="d-inline-block card-subtitle mb-2" th:text="${course.course_price}"></p>
+                    </div>
+                    <div>
+                    <p class="d-inline-block card-subtitle mb-2" th:text="${course.course_rating}"></p>
+                    <div class="d-inline-block">⭐</div> 
+                    </div>
+                </div>
+           
+                <a th:href="@{/courses/{id}(id=${course.course_id})}" class="btn btn-primary mt-2">See More</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <table class="table table-bordered table-striped">
+        
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Course Description</th>
+                    <th>Instructor Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course: ${courses}">
+                    <td th:text="${course.course_id}" />
+                    <td th:text="${course.course_name}" />
+                    <td th:text="${course.course_desc}" />
+                    <td th:text="${course.instructor_name}" />
+                </tr>
+            </tbody>
+            
+        </table> -->
+    </div>
+  </section>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
