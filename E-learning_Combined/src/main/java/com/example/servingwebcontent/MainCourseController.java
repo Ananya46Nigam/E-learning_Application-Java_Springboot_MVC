@@ -1,7 +1,5 @@
 package com.example.servingwebcontent;
-
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +11,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller 
 @RequestMapping(path="/") 
 public class MainCourseController {
   @Autowired 
   private CourseRepository courseRepository;
+
+  // @Autowired
+  // private InstructorService instructorService;
 
   @GetMapping({"/home", "/"})
   public String getIndex(Model model) {
@@ -32,9 +35,15 @@ public class MainCourseController {
       return "index";
   }
   
-  @PostMapping(path="/admin/add") // Map POST Requests
+  @GetMapping("/addcourse")
+  public String showAddCourseForm(Model model) {
+      model.addAttribute("courses", new Course());
+      return "add-course";
+  }
+  
+  @PostMapping(path="/add") // Map POST Requests
   public @ResponseBody ModelAndView addNewCourse (
-  //  @RequestParam Integer course_id, 
+    //@RequestParam Integer course_id, 
     @RequestParam String course_name,
     @RequestParam String course_desc,
     @RequestParam String instructor_name,
@@ -46,7 +55,7 @@ public class MainCourseController {
     ) {
 
     Course newCourse = new Course();
-  //  newCourse.setCourseId(course_id);
+    //newCourse.setCourseId(newCourse.getCourseId()+1);
     newCourse.setCourseName(course_name);
     newCourse.setCourseDesc(course_desc);
     newCourse.setCourseInstructor(instructor_name);
@@ -58,8 +67,9 @@ public class MainCourseController {
     courseRepository.save(newCourse);
     return new ModelAndView("redirect:/list");
   }
+  
 
-  @GetMapping(path="/admin/update/{course_id}")
+  @GetMapping(path="/update/{course_id}")
   public ModelAndView showUpdateForm(@PathVariable Integer course_id) {
   Optional<Course> optionalCourse = courseRepository.findById(course_id);
   if (!optionalCourse.isPresent()) {
@@ -71,7 +81,7 @@ public class MainCourseController {
   return modelAndView;
   }
 
-  @PostMapping(path="/admin/update/{course_id}")
+  @PostMapping(path="/update/{course_id}")
   public @ResponseBody ModelAndView updateCourse (
   @PathVariable Integer course_id,
   @RequestParam String course_name,
@@ -83,38 +93,32 @@ public class MainCourseController {
   @RequestParam String course_difficulty_level,
   @RequestParam Double course_estimated_duration
   ) {
-  Optional<Course> optionalCourse = courseRepository.findById(course_id);
-  if (!optionalCourse.isPresent()) {
-  return new ModelAndView("error");
-  }
-  Course existingCourse = optionalCourse.get();
-  existingCourse.setCourseName(course_name);
-  existingCourse.setCourseDesc(course_desc);
-  existingCourse.setCourseInstructor(instructor_name);
-  existingCourse.setCourseImgUrl(course_img_url);
-  existingCourse.setCourseRating(course_rating);
-  existingCourse.setCoursePrice(course_price);
-  existingCourse.setCourseDifficultyLevel(course_difficulty_level);
-  existingCourse.setCourseDuration(course_estimated_duration);
-  courseRepository.save(existingCourse);
-  return new ModelAndView("redirect:/admin/list");
+    Optional<Course> optionalCourse = courseRepository.findById(course_id);
+    if (!optionalCourse.isPresent()) {
+    return new ModelAndView("error");
+    }
+      Course existingCourse = optionalCourse.get();
+      existingCourse.setCourseName(course_name);
+      existingCourse.setCourseDesc(course_desc);
+      existingCourse.setCourseInstructor(instructor_name);
+      existingCourse.setCourseImgUrl(course_img_url);
+      existingCourse.setCourseRating(course_rating);
+      existingCourse.setCoursePrice(course_price);
+      existingCourse.setCourseDifficultyLevel(course_difficulty_level);
+      existingCourse.setCourseDuration(course_estimated_duration);
+      courseRepository.save(existingCourse);
+    return new ModelAndView("redirect:/list");
   }
   // Delete a course by ID
-  @GetMapping("/admin/delete/{course_id}")
+  @GetMapping("/delete/{course_id}")
   public String deleteCourse(@PathVariable("course_id") Integer course_id) {
       Course course = courseRepository.findById(course_id)
           .orElseThrow(() -> new IllegalArgumentException("Invalid course ID: " + course_id));
       courseRepository.delete(course);
-      return "redirect:/admin/list";
+      return "redirect:/list";
   }
 
-  @GetMapping("/admin/add-course")
-  public String showAddCourseForm(Model model) {
-      model.addAttribute("courses", new Course());
-      return "add-course";
-  }
-
-  @GetMapping("/admin/list")
+  @GetMapping("/actiononcourse")
   public String getAllAdminCourses(Model model) {
       model.addAttribute("courses", courseRepository.findAll());
       return "admin-list-courses";
@@ -140,4 +144,29 @@ public class MainCourseController {
       return "course-details";
   }
 
+  @GetMapping("/courses/{course_id}/view-course")
+  public String showIndividualCourse(Model model, @PathVariable("course_id") Integer course_id) {
+    Course course = courseRepository.findById(course_id)
+    .orElseThrow(() -> new IllegalArgumentException("Invalid course ID: " + course_id));
+    model.addAttribute("courses", course);
+      return "course-page";
+  }
+
+  @PostMapping("/markAsDone")
+  public String markAsDone(@RequestParam int itemId, HttpSession session) {
+      int progress = (int) session.getAttribute("progress");
+      progress++;
+      session.setAttribute("progress", progress);
+      return "redirect:/";
+  }
+
+  @GetMapping("/view-progress")
+  public String myPage(Model model, HttpSession session) {
+      if (!model.containsAttribute("progress")) {
+          session.setAttribute("progress", 0);
+      }
+      // Other model attributes and view name
+      return "view-progress";
+  }
+   
 }

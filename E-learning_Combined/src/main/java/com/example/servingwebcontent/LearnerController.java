@@ -14,6 +14,10 @@ public class LearnerController
 {
   @Autowired
   private LearnerService learnerService;
+
+  @Autowired 
+  private CourseRepository courseRepository;
+  
   @GetMapping("/LoginLearnerForm")
   public String LearnerLogin(Model model)
   {
@@ -79,5 +83,23 @@ public String handleInstructorLogin(@ModelAttribute("learner")  Learner learner)
         learnerService.saveUpdatedLearner(learner);
         return "learner_details";
       }
+
+      @GetMapping("/enrollcourse")
+      public String getAllCourses(Model model) {
+          model.addAttribute("courses", courseRepository.findAll());
+          return "list-courses";
+      }
+      @PostMapping("/enrollforcourse")
+      public String enrollForCourse(@RequestParam("courseId") Integer courseId, Model model) {
+        Course course = courseRepository.findById(courseId).get();
+        int enroll = course.getLearner_enrolled() + 1;
+        course.setLearner_enrolled(enroll);
+        courseRepository.save(course); // Save the updated course to the database
+        model.addAttribute("course", course);
+        return "courseenrolled";
+      }
+
+
+  //@GetMapping("/cour")
 }
 

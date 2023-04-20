@@ -94,9 +94,8 @@
               
             </div>
   
-      
-  
-            <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Enroll for course</button>
+            <a th:href="@{/courses/{id}/view-course(id=${course.course_id})}" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Enroll for course</a>
+    
           </form>
         </div>
   

@@ -44,8 +44,8 @@
                 
                 <div class="d-flex justify-content-around">
                 <a th:href="@{/courses/{id}(id=${course.course_id})}" class="btn btn-primary">Know More</a>
-                <a th:href="@{/admin/update/{course_id}(course_id=${course.course_id})}" class="btn btn-dark">Update</a> 
-                <a th:href="@{/admin/delete/{course_id}(course_id=${course.course_id})}" class="btn btn-danger">Delete</a> 
+                <a th:href="@{/update/{course_id}(course_id=${course.course_id})}" class="btn btn-dark">Update</a> 
+                <a th:href="@{/delete/{course_id}(course_id=${course.course_id})}" class="btn btn-danger">Delete</a> 
                 </div>
             </div>
             </div>

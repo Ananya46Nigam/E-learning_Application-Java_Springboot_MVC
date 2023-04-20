@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
 @Controller
 public class InstructorController
 {
   @Autowired // MainController class can use the methods provided by the 
   //InstructorService class without having to explicitly create an instance of it.
   private InstructorService instructorService;
+
   //display all the instructors
   @GetMapping("/LoginInstructorForm")
   public String showNewInstructorForm(Model model)
@@ -78,13 +78,6 @@ public String InstructorFunctions(Model model, @RequestParam("username") String 
         return "update_instructor";
     }
 
-  //   @PostMapping("/saveUpdatedInstructor")
-  // public String saveUpdatedInstructor(@ModelAttribute("instructor") Instructor instructor,Mode)
-  // {
-  //   instructorService.saveUpdatedInstructor(instructor);
-  //   return "instructor_functions";
-  // }
-
 @PostMapping("/saveUpdatedInstructor")
 public String saveUpdatedInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
 {
@@ -96,5 +89,4 @@ public String saveUpdatedInstructor(@ModelAttribute("instructor") Instructor ins
     return "instructor_details";
     
 }
-
 }

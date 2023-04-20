@@ -14,7 +14,7 @@ public class InstructorServiceImp implements InstructorService
 {
     @Autowired
     private InstructorRepository instructorRepository;
-
+    
     @Override
     public List<Instructor> getAllInstructors()
     {
@@ -86,4 +86,8 @@ public class InstructorServiceImp implements InstructorService
             this.instructorRepository.save(existingInstructor);
         }
     }
+    // public void addNewCourse(Course course) {
+    //     courseRepository.save(course);
+    // }
+    
 }

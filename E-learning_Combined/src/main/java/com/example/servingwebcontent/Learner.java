@@ -33,6 +33,8 @@ public class Learner
     @Column(name = "contact_no")
     public String contact_no;
 
+    @Column(name = "course_id")
+    public String course_id;
 
     public Integer getId() 
     {
@@ -100,6 +102,12 @@ public class Learner
     {
       this.contact_no = contact_no;
     }
+    public String getCourse_id() {
+      return course_id;
+    }
 
+    public void setCourse_id(String course_id) {
+      this.course_id = course_id;
+    }
 }
 
