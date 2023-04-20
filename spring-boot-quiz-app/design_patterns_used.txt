@@ -1,6 +1,6 @@
 1.Model-View-Controller (MVC) Pattern: This pattern separates the application into three components: model (data), view (user interface), and controller (handles user input and updates the model and view). In a quiz application, the model would contain the quiz questions and answers, the view would display the questions and receive user input, and the controller would handle user input and update the model and view accordingly.
 
-#GRASP Principles:
+# GRASP Principles:
 
 1.Creator : The QuizService class follows the Creator principle, as it is responsible for creating and providing Question objects to the MainController.The QuizService class creates a new instance of the QuestionForm class and populates it with questions from the database. It follows the Creator pattern from GRASP, where a class is responsible for creating new instances of other classes
 
@@ -15,7 +15,7 @@
 6.Indirection: The QuizService class interacts with the QuestionRepo and ResultRepo classes through their respective interfaces rather than directly. It follows the Indirection pattern from GRASP, where objects should interact with other objects through abstract interfaces rather than concrete implementations.
 
 
-#SOLID Principles:
+# SOLID Principles:
 
 1.Single Responsibility Principle (SRP): Each class has a single responsibility or task to perform. For example, the MainController class is responsible for handling HTTP requests and managing the quiz flow, the QuizService class manages the quiz logic, and the Question class represents the question entity.
 
