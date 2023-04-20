@@ -1,0 +1,24 @@
+1.Model-View-Controller (MVC) Pattern: This pattern separates the application into three components: model (data), view (user interface), and controller (handles user input and updates the model and view). In a quiz application, the model would contain the quiz questions and answers, the view would display the questions and receive user input, and the controller would handle user input and update the model and view accordingly.
+
+GRASP Principles:
+
+1.Creator : The QuizService class follows the Creator principle, as it is responsible for creating and providing Question objects to the MainController.The QuizService class creates a new instance of the QuestionForm class and populates it with questions from the database. It follows the Creator pattern from GRASP, where a class is responsible for creating new instances of other classes
+
+2.Information Expert: The Question class holds the data for a single question in the quiz. It follows the Information Expert pattern from GRASP, where the object with the most information about a particular concept is responsible for that concept
+
+3.Controller: The MainController class follows the Controller pattern by acting as a central point for handling incoming requests and delegating the necessary tasks to other classes.
+
+4.Low Coupling: The MainController class communicates with the QuizService class through method calls and does not depend on the specific implementation of the service. It follows the Low Coupling pattern from GRASP, where objects should minimize their dependencies on other objects
+
+5.High Cohesion: The QuizService class has methods that are related to the same responsibility (manipulating questions and results). It follows the High Cohesion pattern from GRASP, where objects should have a single, well-defined responsibility.
+
+6.Indirection: The QuizService class interacts with the QuestionRepo and ResultRepo classes through their respective interfaces rather than directly. It follows the Indirection pattern from GRASP, where objects should interact with other objects through abstract interfaces rather than concrete implementations.
+
+
+SOLID Principles:
+
+1.Single Responsibility Principle (SRP): Each class has a single responsibility or task to perform. For example, the MainController class is responsible for handling HTTP requests and managing the quiz flow, the QuizService class manages the quiz logic, and the Question class represents the question entity.
+
+2.Dependency Inversion Principle (DIP): The code uses dependency injection via the @Autowired annotation to invert the control of object creation and management from the class to the Spring framework. This allows the code to be more flexible and maintainable
+
+3.Open/Closed Principle (OCP): The application seems to be open for extension, and new functionality can be added without modifying the existing code. For example, new questions can be added by inserting them into the database, and the QuizService class can be extended to support new types of quizzes
