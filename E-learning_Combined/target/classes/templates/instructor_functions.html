@@ -66,9 +66,10 @@
     <div class="content">
         <h2>Which action do you wish to perform?</h2>
         <a th:href="@{/updateinstructor(username=${instructor.username})}"><button>Update Account</button></a>
-        <a th:href="@{/addcourse(username=${instructor.username})}"><button>Add course</button></a>
-        <a th:href="@{/updatecourse(username=${instructor.username})}"><button>Update Course</button></a>
-        <a th:href="@{/deletecourse(username=${instructor.username})}"><button>Delete Course</button></a>
+        <a th:href="@{/addcourse}"><button>Add course</button></a>
+        <!-- <a th:href="@{/updatecourse(username=${instructor.username})}"><button>Update Course</button></a>
+        <a th:href="@{/deletecourse(username=${instructor.username})}"><button>Delete Course</button></a> -->
+        <a th:href="@{/actiononcourse}"><button>Action performed on course</button></a>
     </div>
     
 </body>

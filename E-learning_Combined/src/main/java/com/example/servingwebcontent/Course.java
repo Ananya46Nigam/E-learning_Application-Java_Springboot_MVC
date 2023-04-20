@@ -1,9 +1,9 @@
 package com.example.servingwebcontent;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 
 @Entity 
 public class Course {
@@ -18,8 +18,8 @@ public class Course {
   public Integer course_price;
   public String course_difficulty_level;
   public Double course_estimated_duration;
-  //public boolean published;
-
+  public Integer learner_enrolled = 0 ;
+  
    /* course id */
   public Integer getCourseId() {
     return course_id;
@@ -92,12 +92,11 @@ public class Course {
     this.course_estimated_duration = course_estimated_duration;
   }
 
+  public int getLearner_enrolled() {
+    return learner_enrolled;
+  }
+  public void setLearner_enrolled(int learner_enrolled) {
+    this.learner_enrolled = learner_enrolled;
+  }
 
-  // public boolean isPublished() {
-  //   return published;
-  // }
-
-  // public void setPublished(boolean published) {
-  //   this.published = published;
-  // }
 }
