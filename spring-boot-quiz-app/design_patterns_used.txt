@@ -51,3 +51,5 @@ Factory Method: The getQuestions() method in the QuizService class can be consid
 
 
 Builder Pattern: The getQuestions() method in the QuizService class uses the Builder pattern to create a QuestionForm object. It first retrieves all questions from the database, selects a random subset of five questions, and then adds them to a new QuestionForm object. By using the Builder pattern, the code can create QuestionForm objects in a flexible and extensible way, making it easier to modify the selection algorithm or add new features in the future.
+
+Builder pattern: The QuestionForm class acts as a builder that creates a list of Question objects.
